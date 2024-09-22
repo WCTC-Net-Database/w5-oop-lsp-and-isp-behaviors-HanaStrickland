@@ -8,12 +8,16 @@ namespace W5_assignment_template.Services
         private readonly IEntity _character;
         private readonly IEntity _goblin;
         private readonly IEntity _ghost;
+        private readonly IEntity _wizard;
+        private readonly IEntity _princess;
 
-        public GameEngine(IEntity character, IEntity goblin, IEntity ghost)
+        public GameEngine(IEntity character, IEntity goblin, IEntity ghost, IEntity wizard, IEntity princess)
         {
             _character = character;
             _goblin = goblin;
             _ghost = ghost;
+            _wizard = wizard;
+            _princess = princess;
         }
 
         public void Run()
@@ -21,6 +25,8 @@ namespace W5_assignment_template.Services
             _character.Name = "Hero";
             _goblin.Name = "Goblin";
             _ghost.Name = "Ghost";
+            _wizard.Name = "Merlin";
+            _princess.Name = "Peach";
 
             _character.Move();
             _character.Attack(_goblin);
@@ -38,6 +44,17 @@ namespace W5_assignment_template.Services
             else
             {
                 _ghost.Move();
+            }
+
+            if (_wizard is ICastable)
+            {
+                ((ICastable)_wizard).CastSpell();
+            }
+
+            _princess.Move();
+            if (_princess is IPoisonable)
+            {
+                ((IPoisonable)_princess).PoisonEnemy(_goblin);
             }
         }
     }

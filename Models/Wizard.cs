@@ -2,7 +2,7 @@ using W5_assignment_template.Interfaces;
 
 namespace W5_assignment_template.Models
 {
-    public class Wizard : IEntity, ICastable
+    public class Wizard : IEntity
     {
         public string Name {get;set;}
 
@@ -16,7 +16,7 @@ namespace W5_assignment_template.Models
             Console.WriteLine($"{Name} moves on a broom.");
         }
 
-        public void CastSpell()
+        public void ExecuteCastSpell()
         {
             Console.WriteLine($"{Name} casts a repelling spell.");
         }

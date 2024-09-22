@@ -46,10 +46,7 @@ namespace W5_assignment_template.Services
                 _ghost.Move();
             }
 
-            if (_wizard is ICastable)
-            {
-                ((ICastable)_wizard).CastSpell();
-            }
+            ((Wizard)_wizard).ExecuteCastSpell();
 
             _princess.Move();
             if (_princess is IPoisonable)
